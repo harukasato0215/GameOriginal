@@ -4,9 +4,9 @@ public class Treasure {
 	int rare;
 	int price;
 
-	
-	
-		
-	
+
+
+
+
 
 }
