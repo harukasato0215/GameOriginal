@@ -29,8 +29,15 @@ public class Main {
 			t3.name ="伝説の宝石";
 			t3.rare = 3;
 			t3.price = 10000;
+			
+			Treasure t4;//誰かの靴下のインスタンス
+			t4 = new Treasure();
+			t4.name ="誰かの靴下";
+			t4.rare = 0;
+			t4.price = 10;
+			
 		
-			Treasure[] types = {t1,t2,t3};
+			Treasure[] types = {t1,t2,t3,t4};
 
 			
 			//財布とその中身
@@ -61,6 +68,7 @@ public class Main {
 					treasure.rare = treasureRare;
 					treasure.price = treasurePrice;
 					treasures.add(treasure);
+					System.out.println("");
 					break;
 
 			case 2://宝を売る
@@ -69,35 +77,44 @@ public class Main {
 				}else {//宝物を持っているとき
 					while(true) {
 						for (int i = 0; i < treasures.size(); i++) {
-							System.out.printf("%d・・・%s[%s](%d)\n", i, treasures.get(i).name, treasures.get(i).rare, treasures.get(i).price);
+							System.out.printf("%d・・・%s\n", i, treasures.get(i).name);
 						}
 						//どの宝物にするか選択
 						System.out.println("どの宝物を売る？");
 						select = new Scanner(System.in).nextInt();
-						//売れたものを表示 財布に売ったモノの値段をいれる
-						treasures.remove(select);
+						//財布に売ったモノの値段をいれる
+						main.money += treasures.get(select).price;
 						
 						//”～～円で売れた！　所持金　～～円と出力
-						System.out.println(treasures.get(select).price +"円で売れた！所持金" + main.money);
+						System.out.println(treasures.get(select).price +"円で売れた！　【所持金" + main.money +"円】");
+						System.out.println("");
+						//売れたものをけす　 
+						treasures.remove(select);
 						System.out.println("ほかのものも売る？");//続けるかどうかの確認
 						System.out.println("1:はい　2:いいえ");
 						int reply =new Scanner(System.in).nextInt();
 						if(reply == 2) {
 							break;
+						}else if(treasures.isEmpty() == true) {
+							System.out.println("持っている宝物がないよ！");
+							break;
 						}
 					}
-
+					System.out.println("");
+					
 				}
 				break;
 			case 3:
+				System.out.println("・・・");
+				System.out.println("・・・");
 				System.out.println("!!!結果発表!!!");
 				//お宝の表示
-				System.out.print("～見つけた宝物～");
+				System.out.println("～見つけた宝物～");
 				for(Treasure t:treasures ) {//持っている宝物を表示
 					System.out.printf("%s[%s](%d)\n", t.name, t.rare, t.price);
 				}
 				//お金の表示
-				System.out.print("～持っているお金～");
+				System.out.println("～持っているお金～");
 				System.out.println(main.money + "円");
 				System.out.println("また遊んでね(^▽^)/");
 				return;
