@@ -109,9 +109,9 @@ public class Main {
 				System.out.println("・・・");
 				System.out.println("!!!結果発表!!!");
 				//お宝の表示
-				System.out.println("～見つけた宝物～");
+				System.out.println("～持っている宝物～");
 				for(Treasure t:treasures ) {//持っている宝物を表示
-					System.out.printf("%s[%s](%d)\n", t.name, t.rare, t.price);
+					System.out.printf("%s[%s]\n", t.name, t.rare);
 				}
 				//お金の表示
 				System.out.println("～持っているお金～");
